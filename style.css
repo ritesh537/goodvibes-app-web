@@ -1,4 +1,4 @@
-/* Reset default margin */
+/* Reset defaults */
 body, html {
   margin: 0;
   padding: 0;
@@ -6,17 +6,14 @@ body, html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Background image full screen */
+/* Fancy gradient background */
 body {
-  background: url("assets/background.jpg") no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   height: 100vh;
 }
 
-/* Semi-transparent dark overlay */
+/* Center content */
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
   display: flex;
@@ -24,7 +21,7 @@ body {
   justify-content: center;
 }
 
-/* Centered text */
+/* Text styles */
 .content {
   text-align: center;
   color: #fff;
@@ -34,6 +31,7 @@ body {
 .content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  animation: pulse 2s infinite;
 }
 
 .content p {
@@ -41,8 +39,14 @@ body {
   color: #f0f0f0;
 }
 
-/* Simple fade-in animation */
+/* Fade-in effect */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle pulsing animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
