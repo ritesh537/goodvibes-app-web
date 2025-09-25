@@ -1,17 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>goodvibes Apps — About the Developer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="overlay">
-    <div class="content">
-      <h1>🚀 Coming Soon</h1>
-      <p>We’re building something awesome. Stay tuned!</p>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">goodvibes Apps</h1>
+      <p class="tagline">Crafting small apps with big heart.</p>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <!-- About / Profile -->
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>About the Developer</h2>
+          <p>
+            Hi, 
+          </p>
+          <ul class="bullets">
+            <li>Android & iOS (Kotlin/Compose, SwiftUI)</li>
+            <li>Cloud & DevOps friendly (CI/CD, monitoring)</li>
+            <li>Privacy-respecting, minimal analytics</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Contact</h3>
+          <p>Email: <a href="mailto:hello@abcapps.dev">goodvibestester1@gmail.com</a></p>
+          <p>Twitter/X: <a href="#" target="_blank" rel="noopener">@abcapps</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updates (Auto-swiping slider #1) -->
+    <section class="section">
+      <div class="container">
+        <h2>Updates</h2>
+        <div id="updates-slider" class="slider">
+          <div class="slider-track"></div>
+          <div class="slider-dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder for a future slider section (#2) -->
+    <!--
+    <section class="section">
+      <div class="container">
+        <h2>Roadmap</h2>
+        <div id="roadmap-slider" class="slider">
+          <div class="slider-track"></div>
+          <div class="slider-dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+    -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> ABC Apps. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
