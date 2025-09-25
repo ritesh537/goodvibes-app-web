@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updatesSlides = [
     {
       kicker: "Update",
-      title: "MFD app is going live on Android soon",
+      title: "My Finance Diary app is going live on Android soon",
       text: "Final checks in progress. Watch this space.",
       badge: "Android"
     },
