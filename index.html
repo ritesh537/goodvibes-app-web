@@ -3,68 +3,88 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>goodvibes Apps — About the Developer</title>
+  <title>goodvibes Apps</title>
+  <meta name="description" content="ABC Apps — simple, thoughtful apps that enhance people's lives." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1 class="brand">goodvibes Apps</h1>
-      <p class="tagline">Crafting small apps with big heart.</p>
+    <div class="container header-inner">
+      <div class="brand-pack">
+        <div class="logo">GD</div>
+        <div>
+          <h1 class="brand">goodvibes Apps</h1>
+          <p class="tagline">Small. Focused. Helpful.</p>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="#about">About</a>
+        <a href="#updates">Updates</a>
+      </nav>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h2>Building apps that actually help</h2>
+          <p class="lead">
+            Thoughtful design, clean performance, and a bias for usefulness.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- About / Profile -->
-    <section class="section">
+    <section id="about" class="section">
       <div class="container grid-2">
         <div>
-          <h2>About the Developer</h2>
-          <p>
-            Hi, 
+          <h3>About the Developer</h3>
+          <p class="body">
+            Hi, as a developer our team is focused on providing apps which will enhance the peoples life in some way.
+            and nothing else.
           </p>
-          <ul class="bullets">
-            <li>Android & iOS (Kotlin/Compose, SwiftUI)</li>
-            <li>Cloud & DevOps friendly (CI/CD, monitoring)</li>
-            <li>Privacy-respecting, minimal analytics</li>
+        </div>
+
+        <div class="card">
+          <h4>Contact</h4>
+          <ul class="list">
+            <li>Email: <a href="mailto:hello@abcapps.dev">hello@abcapps.dev</a></li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Contact</h3>
-          <p>Email: <a href="mailto:hello@abcapps.dev">goodvibestester1@gmail.com</a></p>
-          <p>Twitter/X: <a href="#" target="_blank" rel="noopener">@abcapps</a></p>
-        </div>
       </div>
     </section>
 
-    <!-- Updates (Auto-swiping slider #1) -->
-    <section class="section">
+    <!-- Updates (Auto-swiping slider) -->
+    <section id="updates" class="section">
       <div class="container">
-        <h2>Updates</h2>
-        <div id="updates-slider" class="slider">
-          <div class="slider-track"></div>
-          <div class="slider-dots" aria-hidden="true"></div>
+        <div class="section-head">
+          <h3>Updates</h3>
+          <small class="muted">Latest status across platforms</small>
         </div>
-      </div>
-    </section>
 
-    <!-- Placeholder for a future slider section (#2) -->
-    <!--
-    <section class="section">
-      <div class="container">
-        <h2>Roadmap</h2>
-        <div id="roadmap-slider" class="slider">
+        <div id="updates-slider" class="slider" aria-live="polite">
           <div class="slider-track"></div>
           <div class="slider-dots" aria-hidden="true"></div>
+          <!-- prev/next buttons -->
+          <button class="nav prev" aria-label="Previous slide">‹</button>
+          <button class="nav next" aria-label="Next slide">›</button>
         </div>
+
+        <noscript>
+          <p class="muted" style="margin-top:12px;">Enable JavaScript to see updates.</p>
+        </noscript>
       </div>
     </section>
-    -->
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> ABC Apps. All rights reserved.</small>
+      <small>© <span id="year"></span> goodvibes Apps. All rights reserved.</small>
     </div>
   </footer>
 
