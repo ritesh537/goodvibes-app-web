@@ -113,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "MyFinanceDiary is available on Google Play",
       text: "Start tracking expenses, SIPs and your journey to financial freedom today.",
       badge: "Android",
-      img: "assets/img/Feature_Graphic_1024x500.jpg", // update if hosted elsewhere
-      imgAlt: "MyFinanceDiary feature graphic",
       link: "https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary",
       linkText: "Open on Google Play"
     },
