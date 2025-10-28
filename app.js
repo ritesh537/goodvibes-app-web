@@ -1,6 +1,6 @@
 // ensure DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  // Footer year
+  // Footer year update
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = root.querySelector('.slider-track');
     const dotsWrap = root.querySelector('.slider-dots');
 
-    // build slides
+    // build slides dynamically
     slides.forEach((s, idx) => {
       const el = document.createElement('article');
       el.className = 'slide';
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${s.kicker ? `<div class="kicker">${s.kicker}</div>` : ''}
           <h4>${s.title}</h4>
           ${s.text ? `<p>${s.text}</p>` : ''}
-          ${s.link ? `<p><a class="btn" href="${s.link}" target="_blank" rel="noopener noreferrer">${s.linkText ?? 'Open link'}</a></p>` : ''}
+          ${s.link ? `<a class="btn" href="${s.link}" target="_blank" rel="noopener noreferrer">${s.linkText ?? 'Open link'}</a>` : ''}
         </div>
         ${s.badge ? `<span class="badge">${s.badge}</span>` : ''}
       `;
@@ -65,16 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto-advance
     restart();
 
-    // Hover pause (desktop)
+    // Pause on hover (desktop)
     root.addEventListener('mouseenter', () => clearInterval(timer));
     root.addEventListener('mouseleave', restart);
 
-    // Swipe support
+    // Swipe support (mobile)
     if (enableSwipe) {
       let startX = 0, delta = 0, touching = false;
 
       root.addEventListener('touchstart', e => {
-        touching = true; startX = e.touches[0].clientX; clearInterval(timer);
+        touching = true;
+        startX = e.touches[0].clientX;
+        clearInterval(timer);
       }, { passive: true });
 
       root.addEventListener('touchmove', e => {
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Arrow buttons
+    // Optional arrow buttons
     const prevBtn = root.querySelector('.prev');
     const nextBtn = root.querySelector('.next');
     if (prevBtn) prevBtn.addEventListener('click', prev);
@@ -102,24 +104,24 @@ document.addEventListener('DOMContentLoaded', () => {
     return { next, prev, goTo, destroy: () => clearInterval(timer) };
   }
 
-  /* -------------------------
-     Slider: Updates (LIVE)
-  -------------------------- */
+  /* ---------------------------------
+     Slider: MyFinanceDiary Updates
+  ----------------------------------- */
   const updatesSlides = [
     {
       kicker: "Now Live",
       title: "MyFinanceDiary is available on Google Play",
-      text: "Start tracking expenses, SIPs and your financial freedom today.",
+      text: "Start tracking expenses, SIPs and your journey to financial freedom today.",
       badge: "Android",
-      img: "Feature_Graphic_1024x500.jpg", // or hosted URL
+      img: "assets/img/Feature_Graphic_1024x500.jpg", // update if hosted elsewhere
       imgAlt: "MyFinanceDiary feature graphic",
-      link: "https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary", // replace with actual Play Store link
+      link: "https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary",
       linkText: "Open on Google Play"
     },
     {
-      kicker: "Progress",
-      title: "iOS version in development",
-      text: "Development underway. Updates coming soon.",
+      kicker: "In Progress",
+      title: "iOS version coming soon",
+      text: "Development underway. Stay tuned for updates.",
       badge: "iOS"
     }
   ];
