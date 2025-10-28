@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const intervalMs = opts.intervalMs ?? 3500;
     const loop = opts.loop ?? true;
     const enableSwipe = opts.swipe ?? true;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const root = document.getElementById(id);
     if (!root) return console.warn(`[slider] container #${id} not found`);
@@ -25,10 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const el = document.createElement('article');
       el.className = 'slide';
       el.innerHTML = `
-        <div>
+        ${s.img ? `<figure class="slide-media"><img src="${s.img}" alt="${s.imgAlt ?? s.title}" loading="lazy"></figure>` : ''}
+        <div class="slide-copy">
           ${s.kicker ? `<div class="kicker">${s.kicker}</div>` : ''}
           <h4>${s.title}</h4>
           ${s.text ? `<p>${s.text}</p>` : ''}
+          ${s.link ? `<p><a class="btn" href="${s.link}" target="_blank" rel="noopener noreferrer">${s.linkText ?? 'Open link'}</a></p>` : ''}
         </div>
         ${s.badge ? `<span class="badge">${s.badge}</span>` : ''}
       `;
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function restart() {
       clearInterval(timer);
-      timer = setInterval(next, intervalMs);
+      if (!prefersReduced) timer = setInterval(next, intervalMs);
     }
 
     // Auto-advance
@@ -100,20 +103,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -------------------------
-     Slider: Updates
-     Edit this array to add/remove slides.
+     Slider: Updates (LIVE)
   -------------------------- */
   const updatesSlides = [
     {
-      kicker: "Update",
-      title: "My Finance Diary app is going live on Android soon",
-      text: "Final checks in progress. Watch this space.",
-      badge: "Android"
+      kicker: "Now Live",
+      title: "MyFinanceDiary is available on Google Play",
+      text: "Start tracking expenses, SIPs and your financial freedom today.",
+      badge: "Android",
+      img: "Feature_Graphic_1024x500.jpg", // or hosted URL
+      imgAlt: "MyFinanceDiary feature graphic",
+      link: "https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary", // replace with actual Play Store link
+      linkText: "Open on Google Play"
     },
     {
       kicker: "Progress",
-      title: "iOS version is in progress",
-      text: "Development underway. ETA to be shared.",
+      title: "iOS version in development",
+      text: "Development underway. Updates coming soon.",
       badge: "iOS"
     }
   ];
