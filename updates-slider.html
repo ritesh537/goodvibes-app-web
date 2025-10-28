@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MyFinanceDiary – Updates</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  section#updates-slider {
+    max-width: 1100px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider-wrapper {
+    position: relative;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .slide-media {
+    flex: 0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .slide-copy {
+    flex: 1;
+  }
+
+  .kicker {
+    color: #ff6b6b;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+  }
+
+  h4 {
+    margin: 0.25rem 0 0.5rem 0;
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin: 0.25rem 0;
+  }
+
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    margin-top: 0.75rem;
+  }
+
+  .badge {
+    background: #f43f5e;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background: #111;
+  }
+
+  @media (max-width: 768px) {
+    .slide {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .slide-media {
+      width: 100%;
+    }
+
+    .slide-media img {
+      max-height: 180px;
+    }
+
+    .slide-copy {
+      margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section id="updates-slider" class="slider-wrapper">
+  <div class="slider-track"></div>
+  <div class="slider-dots"></div>
+</section>
+
+<script>
+// ensure DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  // Footer year
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  function createSlider(id, slides, opts = {}) {
+    const intervalMs = opts.intervalMs ?? 3500;
+    const loop = opts.loop ?? true;
+    const enableSwipe = opts.swipe ?? true;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const root = document.getElementById(id);
+    if (!root) return console.warn(`[slider] container #${id} not found`);
+    const track = root.querySelector(".slider-track");
+    const dotsWrap = root.querySelector(".slider-dots");
+
+    // build slides
+    slides.forEach((s, idx) => {
+      const el = document.createElement("article");
+      el.className = "slide";
+      el.innerHTML = `
+        ${s.img ? `<figure class="slide-media"><img src="${s.img}" alt="${s.imgAlt ?? s.title}" loading="lazy"></figure>` : ""}
+        <div class="slide-copy">
+          ${s.kicker ? `<div class="kicker">${s.kicker}</div>` : ""}
+          <h4>${s.title}</h4>
+          ${s.text ? `<p>${s.text}</p>` : ""}
+          ${s.link ? `<a class="btn" href="${s.link}" target="_blank" rel="noopener noreferrer">${s.linkText ?? "Open link"}</a>` : ""}
+        </div>
+        ${s.badge ? `<span class="badge">${s.badge}</span>` : ""}
+      `;
+      track.appendChild(el);
+
+      const dot = document.createElement("button");
+      dot.className = "dot" + (idx === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Go to slide ${idx + 1}`);
+      dot.addEventListener("click", () => goTo(idx));
+      dotsWrap.appendChild(dot);
+    });
+
+    let index = 0,
+      timer = null;
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle("active", di === index));
+      restart();
+    }
+
+    function next() {
+      goTo(index + 1);
+    }
+    function prev() {
+      goTo(index - 1);
+    }
+
+    function restart() {
+      clearInterval(timer);
+      if (!prefersReduced) timer = setInterval(next, intervalMs);
+    }
+
+    restart();
+    root.addEventListener("mouseenter", () => clearInterval(timer));
+    root.addEventListener("mouseleave", restart);
+
+    // Swipe support
+    if (enableSwipe) {
+      let startX = 0,
+        delta = 0,
+        touching = false;
+
+      root.addEventListener(
+        "touchstart",
+        (e) => {
+          touching = true;
+          startX = e.touches[0].clientX;
+          clearInterval(timer);
+        },
+        { passive: true }
+      );
+
+      root.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!touching) return;
+          delta = e.touches[0].clientX - startX;
+          track.style.transform = `translateX(calc(-${index * 100}% + ${delta}px))`;
+        },
+        { passive: true }
+      );
+
+      root.addEventListener("touchend", () => {
+        touching = false;
+        const threshold = 50;
+        if (delta > threshold) prev();
+        else if (delta < -threshold) next();
+        else goTo(index);
+        delta = 0;
+      });
+    }
+
+    return { next, prev, goTo, destroy: () => clearInterval(timer) };
+  }
+
+  /* -------------------------
+     Slider: Updates (LIVE)
+  -------------------------- */
+  const updatesSlides = [
+    {
+      kicker: "Now Live",
+      title: "MyFinanceDiary is available on Google Play",
+      text: "Track expenses, SIPs, and your journey to financial freedom today.",
+      badge: "Android",
+      img: "Feature_Graphic_1024x500.jpg", // path or hosted URL
+      imgAlt: "MyFinanceDiary feature graphic",
+      link: "https://play.google.com/store/apps/details?id=com.your.package", // Replace this
+      linkText: "Open on Google Play",
+    },
+    {
+      kicker: "In Progress",
+      title: "iOS version coming soon",
+      text: "Development underway. Stay tuned for updates.",
+      badge: "iOS",
+    },
+  ];
+
+  createSlider("updates-slider", updatesSlides, { intervalMs: 4000, swipe: true, loop: true });
+});
+</script>
+
+</body>
+</html>
