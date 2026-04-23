@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delete Account Data — MyFinanceDiary</title>
+  <meta name="description" content="How to delete your account data in MyFinanceDiary." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .delete-card {
+      max-width: 520px;
+      margin: 80px auto 0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 36px;
+      text-align: center;
+    }
+    .delete-card .icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+      border-radius: 16px;
+      display: grid; place-items: center;
+      margin: 0 auto 24px;
+      font-size: 26px;
+    }
+    .delete-card h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+    .delete-card p {
+      color: #b6c0d2;
+      margin: 0 0 28px;
+      line-height: 1.6;
+    }
+    .steps {
+      list-style: none;
+      padding: 0; margin: 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7dd3fc33, #a78bfa33);
+      border: 1px solid rgba(125,211,252,0.3);
+      display: grid; place-items: center;
+      font-size: 13px; font-weight: 700;
+      color: #7dd3fc;
+    }
+    .step-text {
+      font-size: 15px;
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+    .step-text strong {
+      color: #e7ecf3;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-pack">
+        <div class="logo">GD</div>
+        <div>
+          <h1 class="brand">GoodVibes Apps</h1>
+          <p class="tagline">Small. Focused. Helpful.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="delete-card">
+          <div class="icon">&#128465;</div>
+          <h2>Delete Your Data</h2>
+          <p>To delete all your account data from MyFinanceDiary, follow these steps:</p>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <span class="step-text">Open the <strong>MyFinanceDiary</strong> app on your device.</span>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <span class="step-text">Go to <strong>Settings</strong>.</span>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <span class="step-text">Tap <strong>Delete Data</strong> and confirm.</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> GoodVibes Apps. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
