@@ -6,92 +6,101 @@
   <title>Delete Account Data — MyFinanceDiary</title>
   <meta name="description" content="How to delete your account data in MyFinanceDiary." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <style>
-    .delete-card {
-      max-width: 520px;
-      margin: 80px auto 0;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 40px 36px;
-      text-align: center;
+    .page-center {
+      min-height: calc(100vh - 68px - 120px);
+      display: grid; place-items: center;
+      padding: 60px 0;
     }
-    .delete-card .icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, #7dd3fc, #a78bfa);
-      border-radius: 16px;
+    .delete-card {
+      width: min(520px, 100%);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 44px 40px;
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(125,211,252,0.06) inset;
+      position: relative; overflow: hidden;
+    }
+    .delete-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(167,139,250,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .card-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(125,211,252,0.2));
+      border: 1px solid rgba(167,139,250,0.3);
+      border-radius: 20px;
       display: grid; place-items: center;
       margin: 0 auto 24px;
-      font-size: 26px;
+      font-size: 28px;
+      box-shadow: 0 0 28px rgba(167,139,250,0.2);
     }
     .delete-card h2 {
-      margin: 0 0 12px;
-      font-size: 24px;
+      margin: 0 0 8px; font-size: 26px; font-weight: 800;
+      background: linear-gradient(120deg, #e8f3ff, var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .delete-card p {
-      color: #b6c0d2;
-      margin: 0 0 28px;
-      line-height: 1.6;
+    .delete-card > p {
+      color: var(--muted); margin: 0 0 30px; line-height: 1.65; font-size: 15px;
     }
     .steps {
-      list-style: none;
-      padding: 0; margin: 0;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      list-style: none; padding: 0; margin: 0;
+      text-align: left; display: flex; flex-direction: column; gap: 12px;
     }
     .steps li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: rgba(255,255,255,0.04);
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.035);
       border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 14px; padding: 16px 18px;
+      transition: border-color .25s, background .25s;
+    }
+    .steps li:hover {
+      border-color: rgba(125,211,252,0.2);
+      background: rgba(125,211,252,0.04);
     }
     .step-num {
-      flex-shrink: 0;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7dd3fc33, #a78bfa33);
-      border: 1px solid rgba(125,211,252,0.3);
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(167,139,250,0.15));
+      border: 1px solid rgba(125,211,252,0.25);
       display: grid; place-items: center;
-      font-size: 13px; font-weight: 700;
-      color: #7dd3fc;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      box-shadow: 0 0 12px rgba(125,211,252,0.12);
     }
-    .step-text {
-      font-size: 15px;
-      line-height: 1.5;
-      padding-top: 4px;
+    .step-text { font-size: 15px; line-height: 1.5; color: var(--muted) }
+    .step-text strong { color: var(--ink) }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 28px; color: var(--muted); font-size: 13px; text-decoration: none;
+      transition: color .2s;
     }
-    .step-text strong {
-      color: #e7ecf3;
-    }
+    .back-link:hover { color: var(--accent); text-decoration: none }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand-pack">
-        <div class="logo">GD</div>
+      <a href="/" class="brand-pack" style="text-decoration:none">
+        <div class="logo">GV</div>
         <div>
           <h1 class="brand">GoodVibes Apps</h1>
           <p class="tagline">Small. Focused. Helpful.</p>
         </div>
-      </div>
+      </a>
     </div>
   </header>
 
   <main>
-    <section class="section">
-      <div class="container">
-        <div class="delete-card">
-          <div class="icon">&#128465;</div>
+    <div class="container">
+      <div class="page-center">
+        <div class="delete-card fade-up">
+          <div class="card-icon">🗑️</div>
           <h2>Delete Your Data</h2>
-          <p>To delete all your account data from MyFinanceDiary, follow these steps:</p>
+          <p>To remove all your data from MyFinanceDiary, follow these simple steps:</p>
           <ol class="steps">
             <li>
               <span class="step-num">1</span>
@@ -99,21 +108,22 @@
             </li>
             <li>
               <span class="step-num">2</span>
-              <span class="step-text">Go to <strong>Settings</strong>.</span>
+              <span class="step-text">Tap <strong>Settings</strong> in the bottom navigation.</span>
             </li>
             <li>
               <span class="step-num">3</span>
-              <span class="step-text">Tap <strong>Delete Data</strong> and confirm.</span>
+              <span class="step-text">Tap <strong>Delete Data</strong> and confirm your choice.</span>
             </li>
           </ol>
+          <a href="/" class="back-link">&#8592; Back to GoodVibes Apps</a>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>&copy; <span id="year"></span> GoodVibes Apps. All rights reserved.</small>
+      <small>© <span id="year"></span> GoodVibes Apps. All rights reserved.</small>
     </div>
   </footer>
 

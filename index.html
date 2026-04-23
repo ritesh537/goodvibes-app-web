@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GoodVibes Apps</title>
-  <meta name="description" content="Goodvibes Apps — simple, thoughtful apps that enhance people's lives." />
+  <meta name="description" content="GoodVibes Apps — simple, thoughtful apps that enhance people's lives." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand-pack">
-        <div class="logo">GD</div>
+        <div class="logo">GV</div>
         <div>
           <h1 class="brand">GoodVibes Apps</h1>
           <p class="tagline">Small. Focused. Helpful.</p>
@@ -21,6 +21,7 @@
       </div>
       <nav class="top-nav">
         <a href="#about">About</a>
+        <a href="#apps">Apps</a>
         <a href="#updates">Updates</a>
       </nav>
     </div>
@@ -31,48 +32,99 @@
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <h3>Building apps that actually help</h2>
-          <p class="lead">
-            Thoughtful design, clean performance, and a bias for usefulness.
-          </p>
+          <div class="hero-badge fade-up">
+            <span class="dot-live"></span> Actively building
+          </div>
+          <h2 class="hero-title fade-up-2">Building apps that<br>actually help.</h2>
+          <p class="lead fade-up-3">Thoughtful design, clean performance, and a bias for usefulness. No fluff, no clutter — just apps that do one thing well.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;" class="fade-up-3">
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary" target="_blank" rel="noopener">
+              &#9654; Google Play
+            </a>
+            <a class="btn btn-ghost" href="#apps">Explore apps</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About / Profile -->
-    <section id="about" class="section">
+    <!-- Apps -->
+    <section id="apps" class="section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:28px">
+          <h3 style="margin:0">Our Apps</h3>
+          <small class="muted">Currently available</small>
+        </div>
+        <div class="app-grid">
+          <div class="app-card card fade-up">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+              <div class="app-icon">&#128200;</div>
+              <div>
+                <h4 style="margin:0 0 2px;font-size:18px">MyFinanceDiary</h4>
+                <span style="font-size:12px;color:var(--accent3);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Finance Tracker</span>
+              </div>
+            </div>
+            <p style="color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 18px">
+              Track expenses, manage budgets, and build healthy financial habits. Your data stays on your device — private by design.
+            </p>
+            <div class="feature-pills" style="margin-bottom:20px">
+              <span class="pill"><span class="pi">📊</span> Budgets</span>
+              <span class="pill"><span class="pi">🔒</span> Local-first</span>
+              <span class="pill"><span class="pi">☁️</span> Drive backup</span>
+              <span class="pill"><span class="pi">⭐</span> Pro plan</span>
+            </div>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.goodvibes.myfinancediary" target="_blank" rel="noopener" style="font-size:13px;padding:9px 18px">
+              &#9654;&nbsp; Download on Google Play
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" style="padding-top:0">
       <div class="container grid-2">
-        <div>
-          <h3>About the Developer</h3>
-          <p class="body">
-            Hi, as a developer I'm focused on providing apps which will enhance the peoples life in some way,
-            and nothing else.
+        <div class="fade-up">
+          <h3 style="margin:0 0 14px">About the Developer</h3>
+          <p style="color:var(--muted);line-height:1.75;margin:0 0 16px;font-size:15px">
+            I build apps focused on enhancing people's lives in some meaningful way — and nothing else. No dark patterns, no data selling, no unnecessary complexity.
+          </p>
+          <p style="color:var(--muted);line-height:1.75;margin:0;font-size:15px">
+            Every app I ship starts with a real problem and aims for the simplest solution that actually works.
           </p>
         </div>
 
-        <div class="card">
-          <h4>Contact</h4>
+        <div class="card fade-up-2">
+          <h4>Get in touch</h4>
           <ul class="list">
-            <li>Email: <a href="mailto:hello@abcapps.dev">goodvibesapp.dev@outlook.com</a></li>
+            <li>
+              <span style="color:var(--muted);font-size:13px;display:block;margin-bottom:2px">Email</span>
+              <a href="mailto:goodvibesapp.dev@outlook.com" style="font-size:14px">goodvibesapp.dev@outlook.com</a>
+            </li>
+            <li style="padding-top:12px">
+              <span style="color:var(--muted);font-size:13px;display:block;margin-bottom:6px">MyFinanceDiary</span>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <a href="/mfd-privacy-policy" style="font-size:13px;color:var(--muted)">Privacy Policy</a>
+                <a href="/mfd-user-delete" style="font-size:13px;color:var(--muted)">Delete Account Data</a>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Updates (Auto-swiping slider) -->
-    <section id="updates" class="section">
+    <!-- Updates -->
+    <section id="updates" class="section" style="padding-top:0">
       <div class="container">
-        <div class="section-head">
-          <h3>Updates</h3>
-          <small class="muted">Latest status across platforms</small>
+        <div class="section-head" style="margin-bottom:20px">
+          <h3 style="margin:0">Updates</h3>
+          <small class="muted">Latest status</small>
         </div>
 
         <div id="updates-slider" class="slider" aria-live="polite">
           <div class="slider-track"></div>
           <div class="slider-dots" aria-hidden="true"></div>
-          <!-- prev/next buttons -->
-          <button class="nav prev" aria-label="Previous slide">‹</button>
-          <button class="nav next" aria-label="Next slide">›</button>
+          <button class="nav prev" aria-label="Previous slide">&#8249;</button>
+          <button class="nav next" aria-label="Next slide">&#8250;</button>
         </div>
 
         <noscript>
@@ -87,6 +139,16 @@
       <small>© <span id="year"></span> GoodVibes Apps. All rights reserved.</small>
     </div>
   </footer>
+
+  <style>
+    .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px }
+    .app-card { border-color: rgba(125,211,252,0.12) }
+    .app-icon {
+      width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(167,139,250,0.15));
+      border: 1px solid rgba(125,211,252,0.2); font-size: 24px; flex-shrink: 0;
+    }
+  </style>
 
   <script src="app.js"></script>
 </body>
